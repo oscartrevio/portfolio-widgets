@@ -35,6 +35,20 @@ const components: MDXComponents = {
   Image: ({ caption, alt, ...props }) => (
     <MDXImage {...props} caption={caption} alt={alt} />
   ),
+  h1: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
+    if (id?.includes("footnote-label")) {
+      return null;
+    }
+    return (
+      <h1
+        id={id}
+        className="flex whitespace-nowrap items-center justify-center gap-4"
+      >
+        {children}
+        <div className="w-full h-px rounded-full bg-border" />
+      </h1>
+    );
+  },
   h2: ({ children, id }: React.HTMLAttributes<HTMLHeadingElement>) => {
     if (id?.includes("footnote-label")) {
       return null;
@@ -61,7 +75,7 @@ const components: MDXComponents = {
   },
   blockquote: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <blockquote
-      className={cn("mt-6 border-gray-4 border-l-2 pl-6 text-muted", className)}
+      className={cn("border-gray-4 border-l-2 pl-3 text-muted", className)}
       {...props}
     />
   ),

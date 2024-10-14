@@ -14,14 +14,6 @@ const config: Config = {
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
-      apple: [
-        "SF Pro Text",
-        "SF Pro Icons",
-        "Helvetica Neue",
-        "Helvetica",
-        "Arial",
-        "sans-serif",
-      ],
       serif: ["var(--font-serif)"],
     },
     extend: {

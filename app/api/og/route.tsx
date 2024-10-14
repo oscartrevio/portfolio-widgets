@@ -28,57 +28,53 @@ export async function GET(request: Request) {
     /*
      * Finally we are fetching the font file from the public directory.
      */
-    const inter = fetch(
-      new URL("/public/assets/inter/medium.ttf", import.meta.url),
-    ).then((res) => res.arrayBuffer());
+    const inter = fetch(new URL("/public/assets/inter/medium.ttf", import.meta.url)).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
-      (
+      <div
+        style={{
+          display: "flex",
+          height: "100%",
+          width: "100%",
+          padding: 64,
+          backgroundColor: "#FCFCFC",
+          fontSize: 32,
+          justifyContent: "space-between",
+          letterSpacing: "-0.69px",
+          lineHeight: "24px",
+        }}
+      >
         <div
           style={{
-            display: "flex",
-            height: "100%",
-            width: "100%",
-            padding: 64,
-            backgroundColor: "#FCFCFC",
-            fontSize: 32,
-            justifyContent: "space-between",
-            letterSpacing: "-0.69px",
-            lineHeight: "24px",
+            color: "#202020",
+            fontWeight: 500,
+            height: 64,
           }}
         >
+          Next.js Portfolio Starter
+        </div>
+
+        {title && (
           <div
             style={{
-              color: "#202020",
-              fontWeight: 500,
-              height: 64,
+              display: "flex",
+              justifyContent: "flex-end",
+              alignItems: "flex-end",
+              gap: 8,
             }}
           >
-            Next.js Portfolio Starter
-          </div>
-
-          {title && (
             <div
               style={{
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "flex-end",
-                gap: 8,
+                color: "#838383",
+                fontWeight: 500,
+                height: 32,
               }}
             >
-              <div
-                style={{
-                  color: "#838383",
-                  fontWeight: 500,
-                  height: 32,
-                }}
-              >
-                {parameters.title}
-              </div>
+              {parameters.title}
             </div>
-          )}
-        </div>
-      ),
+          </div>
+        )}
+      </div>,
       {
         width: 1200,
         height: 630,
