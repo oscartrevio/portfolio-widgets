@@ -42,8 +42,12 @@ export const Layout = ({ post, route }: Props) => {
           <PublishedTime />
           <Seperator />
           <UpdateTime />
-          <Seperator />
-          <ReadingTime />
+          {route !== "craft" && (
+            <>
+              <Seperator />
+              <ReadingTime />
+            </>
+          )}
         </div>
       </div>
 

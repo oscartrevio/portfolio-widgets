@@ -16,15 +16,13 @@ export default function Home() {
       <FadeIn.Item>
         <AboutMe />
       </FadeIn.Item>
-      <FadeIn.Item>
-        <Posts category="guides" preview />
-      </FadeIn.Item>
+      <Spacer />
       <FadeIn.Item>
         <Posts category="thoughts" preview />
       </FadeIn.Item>
       <Spacer />
       <FadeIn.Item>
-        <Posts category="examples" preview />
+        <Posts category="craft" preview />
       </FadeIn.Item>
       <Spacer />
       <FadeIn.Item>
