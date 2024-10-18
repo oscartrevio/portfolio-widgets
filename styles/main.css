@@ -102,11 +102,11 @@
       @apply font-medium;
     }
 
-    h1,
-    h2 {
+    h1 {
       @apply font-semibold;
     }
 
+    h2,
     h3,
     sub,
     sup {
