@@ -18,6 +18,12 @@ const config: Config = {
       "sf-pro": ["var(--font-sf-pro)"],
     },
     extend: {
+      backgroundImage: {
+        overlay: "linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1))",
+      },
+      backgroundBlendMode: {
+        overlay: "overlay",
+      },
       colors: {
         gray: {
           1: "var(--gray-1)",

@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <React.Fragment>
       <Breadcrumb />
-      {children}
+      <article>{children}</article>
     </React.Fragment>
   );
 }

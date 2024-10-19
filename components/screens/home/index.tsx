@@ -3,6 +3,7 @@ import Header from "@/components/header";
 import * as FadeIn from "@/components/motion/staggers/fade";
 import { Posts } from "@/components/posts";
 import AboutMe from "@/components/screens/home/markdown/about-me.mdx";
+import Music from "@/components/widgets/music";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
@@ -31,6 +32,8 @@ export default function Home() {
     // </FadeIn.Container>
     <>
       <Header />
+      <Spacer />
+      <Music />
     </>
   );
 }

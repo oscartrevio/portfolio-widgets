@@ -23,7 +23,7 @@
   * @see: https://colors.radix-ui.com/
   */
 
-  :root {
+  /* :root {
     --bg: var(--gray-1);
     --fg: var(--gray-12);
     --muted: var(--gray-8);
@@ -32,8 +32,8 @@
     --scrollbar-track: transparent;
     --cyan-blue-bg: #00aaff;
     --cyan-blue-fg: #ffffff;
-    /* --selection-background: var(--pink-3);
-    --selection-foreground: var(--pink-11); */
+    --selection-background: var(--pink-3);
+    --selection-foreground: var(--pink-11);
     --selection-background: #fff9a8;
     --selection-foreground: var(--fg);
     --kbd-background: var(--gray-3);
@@ -44,7 +44,7 @@
     --radius-small: 4px;
     --radius-base: 8px;
     --radius-large: 12px;
-  }
+  } */
 
   * {
     --webkit-font-smoothing: antialiased;
@@ -91,7 +91,43 @@
   }
 
   html {
-    @apply text-default text-foreground bg-background;
+    @apply text-foreground bg-background;
+  }
+
+  article {
+    h1 + h2 {
+      @apply mt-1 !important;
+    }
+
+    h1 + p,
+    h2 + p {
+      @apply mt-6 !important;
+    }
+
+    figure + h1,
+    p + h1 {
+      @apply mt-16 !important;
+    }
+
+    figure + h2,
+    p + h2 {
+      @apply mt-9 !important;
+    }
+
+    p:not(:first-child),
+    h1:not(:first-child),
+    h2:not(:first-child),
+    h3:not(:first-child),
+    h4:not(:first-child),
+    h5:not(:first-child),
+    h6:not(:first-child),
+    blockquote:not(:first-child),
+    ul:not(:first-child),
+    ol:not(:first-child),
+    pre:not(:first-child),
+    figure:not(:first-child) {
+      @apply mt-6;
+    }
 
     h1,
     h2,
@@ -143,42 +179,6 @@
       background: var(--kbd-background);
       border-radius: 4px;
       box-shadow: 0 0 0 1px var(--kbd-border);
-    }
-  }
-
-  article {
-    h1 + h2 {
-      @apply mt-1 !important;
-    }
-
-    h1 + p,
-    h2 + p {
-      @apply mt-6 !important;
-    }
-
-    figure + h1,
-    p + h1 {
-      @apply mt-16 !important;
-    }
-
-    figure + h2,
-    p + h2 {
-      @apply mt-9 !important;
-    }
-
-    p:not(:first-child),
-    h1:not(:first-child),
-    h2:not(:first-child),
-    h3:not(:first-child),
-    h4:not(:first-child),
-    h5:not(:first-child),
-    h6:not(:first-child),
-    blockquote:not(:first-child),
-    ul:not(:first-child),
-    ol:not(:first-child),
-    pre:not(:first-child),
-    figure:not(:first-child) {
-      @apply mt-6;
     }
 
     /*
