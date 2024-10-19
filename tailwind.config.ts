@@ -15,6 +15,7 @@ const config: Config = {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
       serif: ["var(--font-serif)"],
+      "sf-pro": ["var(--font-sf-pro)"],
     },
     extend: {
       colors: {
