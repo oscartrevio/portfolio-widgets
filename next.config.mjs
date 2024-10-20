@@ -9,6 +9,11 @@ const nextConfig = {
         hostname: "media.pitchfork.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "i.scdn.co",
+        port: "",
+      },
     ],
   },
   reactStrictMode: true,
