@@ -8,13 +8,10 @@ const Header = ({ className }: HeaderProps) => {
       <h1>Oscar Treviño</h1>
       <h2 className="text-[#9E9E9E]">Design Engineer</h2>
       <p className="mt-4">
-        Crafting 􀙄 seamless digital experiences and designing intuitive,
-        human-centered 􀪤 interfaces. Obsessed with 􀰙 simplicity, innovation, and
-        the smallest details.
+        Crafting 􀙄 seamless digital experiences and designing intuitive, human-centered 􀪤 interfaces. Obsessed with 􀰙 simplicity, innovation, and the smallest
+        details.
       </p>
-      <p className="mt-4">
-        BS in 􀝒 Computer Science at Tecnológico de Monterrey.
-      </p>
+      <p className="mt-4">BS in 􀝒 Computer Science at Tecnológico de Monterrey.</p>
     </div>
   );
 };
