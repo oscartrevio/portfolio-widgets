@@ -51,6 +51,7 @@ const songs: Track[] = [
 export default function Music() {
   const [tracks] = useState(songs);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   const handleNextTrack = () => {
     setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
@@ -60,6 +61,10 @@ export default function Music() {
     setCurrentTrackIndex((prevIndex) =>
       prevIndex === 0 ? tracks.length - 1 : prevIndex - 1,
     );
+  };
+
+  const handlePausePlay = () => {
+    setPaused((prevPaused) => !prevPaused);
   };
 
   const currentTrack = tracks[currentTrackIndex];
@@ -95,21 +100,21 @@ export default function Music() {
             <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">
               Now Playing
             </h1>
-            <span className="leading-tight text-nowrap">
-              <h1 className="flex items-baseline gap-1 bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal text-nowrap">
+            <span className="text-nowrap leading-tight">
+              <h1 className="flex items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
                 {currentTrack.title}{" "}
                 <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
                   {currentTrack.explicit && "􀂝"}
                 </span>
               </h1>
-              <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal text-nowrap">
+              <h1 className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal">
                 {currentTrack.artist}
               </h1>
             </span>
           </div>
         </div>
         {/* MUSIC CONTROLS */}
-        <div className="relative flex items-center gap-3 h-full z-30">
+        <div className="relative z-30 flex h-full items-center gap-3">
           <button
             type="button"
             onClick={handlePreviousTrack}
@@ -119,11 +124,15 @@ export default function Music() {
             <div className="absolute inset-0 z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute inset-0 z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
           </button>
-          <div className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center">
-            <div className="z-10 text-3xl">􀊆</div>
+          <button
+            type="button"
+            onClick={handlePausePlay}
+            className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center"
+          >
+            <div className="z-10 text-3xl">{paused ? "􀊄" : "􀊆"}</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
-          </div>
+          </button>
           <button
             type="button"
             onClick={handleNextTrack}
