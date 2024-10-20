@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "framer-motion"; // Import Framer Motion
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+import { TextMorph } from "../ui/text-morph";
+
 interface Track {
   albumImageUrl: string;
   title: string;
@@ -138,9 +140,13 @@ export default function Music() {
           <AnimatePresence mode="popLayout">
             <motion.div
               key={currentTrackIndex}
-              initial={{ scale: 1, opacity: 0 }}
-              animate={{ scale: paused ? 0.9 : 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 1, opacity: 0, filter: "blur(4px)" }}
+              animate={{
+                scale: paused ? 0.9 : 1,
+                opacity: 1,
+                filter: "blur(0px)",
+              }}
+              exit={{ scale: 1, opacity: 0, filter: "blur(4px)" }}
               transition={{ duration: 0.3 }}
               className="aspect-square size-16"
             >
@@ -163,15 +169,15 @@ export default function Music() {
               Now Playing
             </h1>
             <span className="text-nowrap leading-tight">
-              <h1 className="flex items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
-                {currentTrack.title}{" "}
-                <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
-                  {currentTrack.explicit && "􀂝"}
-                </span>
-              </h1>
-              <h1 className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal">
+              <TextMorph className="items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
+                {currentTrack.title}
+              </TextMorph>
+              {/* <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
+                {currentTrack.explicit && "􀂝"}
+              </span> */}
+              <TextMorph className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal">
                 {currentTrack.artist}
-              </h1>
+              </TextMorph>
             </span>
           </div>
         </div>
