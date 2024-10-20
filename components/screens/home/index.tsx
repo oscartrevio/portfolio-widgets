@@ -1,5 +1,6 @@
 import Header from "@/components/header";
 import * as FadeIn from "@/components/motion/staggers/fade";
+import Movie from "@/components/widgets/movie";
 import Music from "@/components/widgets/music";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
@@ -35,6 +36,13 @@ export default function Home() {
         <Spacer />
         <FadeIn.Item>
           <Music />
+        </FadeIn.Item>
+        <Spacer />
+        <FadeIn.Item>
+          <div className="flex gap-6">
+            <Movie />
+            <Movie />
+          </div>
         </FadeIn.Item>
       </FadeIn.Container>
     </>
