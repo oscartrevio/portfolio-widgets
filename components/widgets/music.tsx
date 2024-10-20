@@ -1,10 +1,15 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
+import { TextMorph } from "../ui/text-morph";
 
 interface Track {
   albumImageUrl: string;
+  href: string;
   title: string;
   artist: string;
   explicit: boolean;
@@ -13,7 +18,8 @@ interface Track {
 const songs: Track[] = [
   {
     albumImageUrl:
-      "https://media.pitchfork.com/photos/65772273239ec61ed8f07f5c/master/pass/Childish-Gambino-Awaken-My-Love.jpg",
+      "https://i.scdn.co/image/ab67616d0000b273f78c98bbf2b3c9e2a764203e",
+    href: "https://open.spotify.com/track/0wXuerDYiBnERgIpbb3JBR",
     title: "Redbone",
     artist: "Childish Gambino",
     explicit: true,
@@ -21,6 +27,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b2739852437d39690c760e108a14",
+    href: "https://open.spotify.com/track/3a3dQOO19moXPeTt2PomoT",
     title: "What You Heard",
     artist: "Sonder",
     explicit: true,
@@ -28,6 +35,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b273175c577a61aa13d4fb4b6534",
+    href: "https://open.spotify.com/track/16umSNZfofRpDqTvf8DIAo",
     title: "Wings",
     artist: "Mac Miller",
     explicit: true,
@@ -35,6 +43,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b273d18fa8f63707115cb1b38f65",
+    href: "https://open.spotify.com/track/4LpUpiYoZ2M3Z1kmhn4EQo",
     title: "Still Beating",
     artist: "Mac DeMarco",
     explicit: false,
@@ -42,6 +51,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a",
+    href: "https://open.spotify.com/track/7D0RhFcb3CrfPuTJ0obrod",
     title: "Sparks",
     artist: "Coldplay",
     explicit: false,
@@ -49,24 +59,72 @@ const songs: Track[] = [
 ];
 
 export default function Music() {
-  const [tracks] = useState(songs);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [tracks] = useState<Track[]>(songs);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<number | null>(
+    null,
+  );
+  const [paused, setPaused] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [coverLoaded, setCoverLoaded] = useState(false);
+
+  useEffect(() => {
+    setCurrentTrackIndex(Math.floor(Math.random() * songs.length));
+  }, []);
+
+  useEffect(() => {
+    if (currentTrackIndex !== null) {
+      setProgress(0);
+    }
+  }, [currentTrackIndex]);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (!paused && currentTrackIndex !== null) {
+      interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            // If progress reaches 100, go to next track
+            handleNextTrack();
+            return 0; // Reset progress to 0
+          }
+          return prev + 0.1; // Increment progress
+        });
+      }, 100); // Increment every 100ms
+    }
+
+    return () => {
+      if (interval) clearInterval(interval); // Cleanup interval on unmount
+    };
+  }, [paused, currentTrackIndex]);
+
+  if (tracks === null || currentTrackIndex === null) {
+    return null;
+  }
 
   const handleNextTrack = () => {
-    setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    setCurrentTrackIndex((prevIndex) => ((prevIndex ?? 0) + 1) % tracks.length);
   };
 
   const handlePreviousTrack = () => {
     setCurrentTrackIndex((prevIndex) =>
-      prevIndex === 0 ? tracks.length - 1 : prevIndex - 1,
+      prevIndex === null
+        ? tracks.length - 1
+        : prevIndex === 0
+          ? tracks.length - 1
+          : prevIndex - 1,
     );
+  };
+
+  const handlePausePlay = () => {
+    setPaused((prevPaused) => !prevPaused);
   };
 
   const currentTrack = tracks[currentTrackIndex];
 
   return (
     <>
-      <div className="relative flex h-24 items-center justify-between overflow-hidden rounded-3xl p-4 font-sf-pro text-white-a12">
+      <div className="relative flex h-24 items-center justify-between overflow-hidden rounded-3xl p-4 font-sf-pro text-white-a12 will-change-auto">
         <div
           className="-z-10 absolute inset-0 saturate-200"
           style={{
@@ -81,58 +139,121 @@ export default function Music() {
           }}
         />
         <div className="z-10 flex items-center gap-2">
-          <Image
-            src={currentTrack.albumImageUrl}
-            alt={"Album cover"}
-            width={100}
-            height={100}
-            className="size-16 rounded-lg"
-            style={{
-              boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
-            }}
-          />
+          {coverLoaded ? null : (
+            <div className="flex aspect-square size-16 items-center justify-center rounded-lg bg-[#C2C2C2] text-black-a12">
+              􀑪
+            </div>
+          )}
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={currentTrackIndex}
+              initial={{ scale: 1, opacity: 0, filter: "blur(4px)" }}
+              animate={{
+                scale: paused ? 0.9 : 1,
+                opacity: 1,
+                filter: "blur(0px)",
+              }}
+              exit={{ scale: 1, opacity: 0, filter: "blur(4px)" }}
+              transition={{ duration: 0.3 }}
+              className="aspect-square size-16"
+            >
+              <Link
+                href={currentTrack.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={currentTrack.albumImageUrl}
+                  alt={"Album cover"}
+                  width={100}
+                  height={100}
+                  onLoad={() => setCoverLoaded(true)}
+                  className="size-16 rounded-lg"
+                  style={{
+                    boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
+                  }}
+                />
+              </Link>
+            </motion.div>
+          </AnimatePresence>
           <div className="flex w-full flex-col gap-1 text-nowrap">
             <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">
               Now Playing
             </h1>
-            <span className="leading-tight text-nowrap">
-              <h1 className="flex items-baseline gap-1 bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal text-nowrap">
-                {currentTrack.title}{" "}
-                <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
-                  {currentTrack.explicit && "􀂝"}
-                </span>
-              </h1>
-              <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal text-nowrap">
+            <span className="text-nowrap leading-tight">
+              <span className="flex items-baseline gap-1">
+                <TextMorph className="items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
+                  {currentTrack.title}
+                </TextMorph>
+                {currentTrack.explicit && (
+                  <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
+                    􀂝
+                  </span>
+                )}
+              </span>
+              <TextMorph className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal">
                 {currentTrack.artist}
-              </h1>
+              </TextMorph>
             </span>
           </div>
         </div>
         {/* MUSIC CONTROLS */}
-        <div className="relative flex items-center gap-3 h-full z-30">
-          <button
+        <div className="relative z-30 flex h-full items-center gap-3">
+          <motion.button
             type="button"
             onClick={handlePreviousTrack}
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
+            whileTap={{ scale: 0.9 }}
           >
             <div className="z-10">􀊊</div>
             <div className="absolute inset-0 z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute inset-0 z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
-          </button>
-          <div className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center">
-            <div className="z-10 text-3xl">􀊆</div>
+          </motion.button>
+          <motion.button
+            type="button"
+            onClick={handlePausePlay}
+            className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center"
+            whileTap={{ scale: 0.9 }}
+          >
+            <div className="z-10 text-3xl">{paused ? "􀊄" : "􀊆"}</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
-          </div>
-          <button
+            <svg
+              className="-rotate-90 absolute top-0 left-0 h-full w-full"
+              viewBox="0 0 100 100"
+            >
+              <title>Track</title>
+              <circle
+                cx="50"
+                cy="50"
+                r="47"
+                fill="transparent"
+                strokeWidth="6"
+                className="stroke-[#C2C2C2] opacity-45 mix-blend-overlay"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="47" // Adjust radius to match the background circle
+                fill="transparent"
+                stroke="#fff"
+                strokeWidth="6"
+                strokeDasharray="295.31"
+                strokeDashoffset={295.31 * (1 - progress / 100)} // Use progress state
+                strokeLinecap="round"
+              />
+            </svg>
+          </motion.button>
+          <motion.button
             type="button"
             onClick={handleNextTrack}
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
+            whileTap={{ scale: 0.9 }}
           >
             <div className="z-10">􀊌</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </>

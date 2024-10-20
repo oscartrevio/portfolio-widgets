@@ -14,6 +14,11 @@ const nextConfig = {
         hostname: "i.scdn.co",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "a.ltrbxd.com",
+        port: "",
+      },
     ],
   },
   reactStrictMode: true,
