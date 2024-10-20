@@ -54,10 +54,38 @@ export default function Music() {
     null,
   );
   const [paused, setPaused] = useState(false);
+  const [progress, setProgress] = useState(0); // State for the progress
 
   useEffect(() => {
     setCurrentTrackIndex(Math.floor(Math.random() * songs.length));
   }, []);
+
+  useEffect(() => {
+    if (currentTrackIndex !== null) {
+      setProgress(0);
+    }
+  }, [currentTrackIndex]);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+
+    if (!paused && currentTrackIndex !== null) {
+      interval = setInterval(() => {
+        setProgress((prev) => {
+          if (prev >= 100) {
+            // If progress reaches 100, go to next track
+            handleNextTrack();
+            return 0; // Reset progress to 0
+          }
+          return prev + 0.1; // Increment progress
+        });
+      }, 100); // Increment every second
+    }
+
+    return () => {
+      if (interval) clearInterval(interval); // Cleanup interval on unmount
+    };
+  }, [paused, currentTrackIndex]);
 
   if (tracks === null || currentTrackIndex === null) {
     return null;
@@ -166,8 +194,8 @@ export default function Music() {
                 fill="transparent"
                 stroke="#fff"
                 strokeWidth="6"
-                strokeDasharray="282.74"
-                strokeDashoffset={282.74 * (1 - 0.75)}
+                strokeDasharray="295.31"
+                strokeDashoffset={295.31 * (1 - progress / 100)} // Use progress state
                 strokeLinecap="round"
               />
             </svg>
