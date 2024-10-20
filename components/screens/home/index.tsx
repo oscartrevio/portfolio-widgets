@@ -31,9 +31,15 @@ export default function Home() {
     //   </FadeIn.Item>
     // </FadeIn.Container>
     <>
-      <Header />
-      <Spacer />
-      <Music />
+      <FadeIn.Container>
+        <FadeIn.Item>
+          <Header />
+        </FadeIn.Item>
+        <Spacer />
+        <FadeIn.Item>
+          <Music />
+        </FadeIn.Item>
+      </FadeIn.Container>
     </>
   );
 }

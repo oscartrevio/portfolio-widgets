@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Track {
   albumImageUrl: string;
@@ -13,7 +13,7 @@ interface Track {
 const songs: Track[] = [
   {
     albumImageUrl:
-      "https://media.pitchfork.com/photos/65772273239ec61ed8f07f5c/master/pass/Childish-Gambino-Awaken-My-Love.jpg",
+      "https://i.scdn.co/image/ab67616d0000b273f78c98bbf2b3c9e2a764203e",
     title: "Redbone",
     artist: "Childish Gambino",
     explicit: true,
@@ -49,17 +49,31 @@ const songs: Track[] = [
 ];
 
 export default function Music() {
-  const [tracks] = useState(songs);
-  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+  const [tracks] = useState<Track[]>(songs);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState<number | null>(
+    null,
+  );
   const [paused, setPaused] = useState(false);
 
+  useEffect(() => {
+    setCurrentTrackIndex(Math.floor(Math.random() * songs.length));
+  }, []);
+
+  if (tracks === null || currentTrackIndex === null) {
+    return null;
+  }
+
   const handleNextTrack = () => {
-    setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    setCurrentTrackIndex((prevIndex) => ((prevIndex ?? 0) + 1) % tracks.length);
   };
 
   const handlePreviousTrack = () => {
     setCurrentTrackIndex((prevIndex) =>
-      prevIndex === 0 ? tracks.length - 1 : prevIndex - 1,
+      prevIndex === null
+        ? tracks.length - 1
+        : prevIndex === 0
+          ? tracks.length - 1
+          : prevIndex - 1,
     );
   };
 
@@ -71,7 +85,7 @@ export default function Music() {
 
   return (
     <>
-      <div className="relative flex h-24 items-center justify-between overflow-hidden rounded-3xl p-4 font-sf-pro text-white-a12">
+      <div className="relative flex h-24 items-center justify-between overflow-hidden rounded-3xl p-4 font-sf-pro text-white-a12 will-change-auto">
         <div
           className="-z-10 absolute inset-0 saturate-200"
           style={{

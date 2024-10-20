@@ -6,7 +6,7 @@ const container = {
   hidden: {},
   show: {
     transition: {
-      staggerChildren: 0.05,
+      staggerChildren: 0.35,
       delayChildren: 0.2,
     },
   },
@@ -34,7 +34,12 @@ const item = {
 
 function Container({ children, className }: React.HTMLProps<HTMLDivElement>) {
   return (
-    <motion.div variants={container} initial="hidden" animate="show" className={className}>
+    <motion.div
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className={className}
+    >
       {children}
     </motion.div>
   );
