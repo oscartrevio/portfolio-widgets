@@ -146,6 +146,31 @@ export default function Music() {
             <div className="z-10 text-3xl">{paused ? "􀊄" : "􀊆"}</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
+            <svg
+              className="-rotate-90 absolute top-0 left-0 h-full w-full"
+              viewBox="0 0 100 100"
+            >
+              <title>Track</title>
+              <circle
+                cx="50"
+                cy="50"
+                r="47"
+                fill="transparent"
+                strokeWidth="6"
+                className="stroke-[#C2C2C2] opacity-45 mix-blend-overlay"
+              />
+              <circle
+                cx="50"
+                cy="50"
+                r="47" // Adjust radius to match the background circle
+                fill="transparent"
+                stroke="#fff"
+                strokeWidth="6"
+                strokeDasharray="282.74"
+                strokeDashoffset={282.74 * (1 - 0.75)}
+                strokeLinecap="round"
+              />
+            </svg>
           </button>
           <button
             type="button"
