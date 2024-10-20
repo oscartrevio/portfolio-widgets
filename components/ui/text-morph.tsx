@@ -12,12 +12,7 @@ type TextMorphProps = {
   style?: React.CSSProperties;
 };
 
-export function TextMorph({
-  children,
-  as: Component = "p",
-  className,
-  style,
-}: TextMorphProps) {
+export function TextMorph({ children, as: Component = "p", className, style }: TextMorphProps) {
   const uniqueId = useId();
 
   const characters = useMemo(() => {

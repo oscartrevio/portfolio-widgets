@@ -53,7 +53,6 @@
     font-variant-ligatures: common-ligatures;
     text-wrap: pretty;
     text-rendering: optimizelegibility;
-
     user-select: none;
     -webkit-user-drag: none;
   }
@@ -61,6 +60,7 @@
   *::selection {
     color: var(--selection-foreground);
     background-color: var(--selection-background);
+
     /* display: "inline";
     margin: "-0.12em -0.23em -0.179em -0.26em";
     padding: 0.12em 0.23em 0.179em 0.26em;

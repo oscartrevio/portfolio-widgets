@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion } from "framer-motion"; // Import Framer Motion
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -163,18 +163,21 @@ export default function Music() {
               />
             </motion.div>
           </AnimatePresence>
-
           <div className="flex w-full flex-col gap-1 text-nowrap">
             <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">
               Now Playing
             </h1>
             <span className="text-nowrap leading-tight">
-              <TextMorph className="items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
-                {currentTrack.title}
-              </TextMorph>
-              {/* <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
-                {currentTrack.explicit && "􀂝"}
-              </span> */}
+              <span className="flex items-baseline gap-1">
+                <TextMorph className="items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
+                  {currentTrack.title}
+                </TextMorph>
+                {currentTrack.explicit && (
+                  <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
+                    􀂝
+                  </span>
+                )}
+              </span>
               <TextMorph className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal">
                 {currentTrack.artist}
               </TextMorph>
@@ -187,7 +190,7 @@ export default function Music() {
             type="button"
             onClick={handlePreviousTrack}
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
-            whileTap={{ scale: 0.9 }} // Scale down on click
+            whileTap={{ scale: 0.9 }}
           >
             <div className="z-10">􀊊</div>
             <div className="absolute inset-0 z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
@@ -197,7 +200,7 @@ export default function Music() {
             type="button"
             onClick={handlePausePlay}
             className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center"
-            whileTap={{ scale: 0.9 }} // Scale down on click
+            whileTap={{ scale: 0.9 }}
           >
             <div className="z-10 text-3xl">{paused ? "􀊄" : "􀊆"}</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
@@ -232,7 +235,7 @@ export default function Music() {
             type="button"
             onClick={handleNextTrack}
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
-            whileTap={{ scale: 0.9 }} // Scale down on click
+            whileTap={{ scale: 0.9 }}
           >
             <div className="z-10">􀊌</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
