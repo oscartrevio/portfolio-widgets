@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion"; // Import Framer Motion
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -80,7 +81,7 @@ export default function Music() {
           }
           return prev + 0.1; // Increment progress
         });
-      }, 100); // Increment every second
+      }, 100); // Increment every 100ms
     }
 
     return () => {
@@ -134,17 +135,28 @@ export default function Music() {
               􀑪
             </div>
           )}
-          <Image
-            src={currentTrack.albumImageUrl}
-            alt={"Album cover"}
-            width={100}
-            height={100}
-            onLoad={() => setCoverLoaded(true)}
-            className="size-16 rounded-lg"
-            style={{
-              boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
-            }}
-          />
+          <AnimatePresence mode="popLayout">
+            <motion.div
+              key={currentTrackIndex}
+              initial={{ scale: 1, opacity: 0 }}
+              animate={{ scale: paused ? 0.9 : 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="aspect-square size-16"
+            >
+              <Image
+                src={currentTrack.albumImageUrl}
+                alt={"Album cover"}
+                width={100}
+                height={100}
+                onLoad={() => setCoverLoaded(true)}
+                className="size-16 rounded-lg"
+                style={{
+                  boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
+                }}
+              />
+            </motion.div>
+          </AnimatePresence>
 
           <div className="flex w-full flex-col gap-1 text-nowrap">
             <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">
@@ -165,19 +177,21 @@ export default function Music() {
         </div>
         {/* MUSIC CONTROLS */}
         <div className="relative z-30 flex h-full items-center gap-3">
-          <button
+          <motion.button
             type="button"
             onClick={handlePreviousTrack}
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
+            whileTap={{ scale: 0.9 }} // Scale down on click
           >
             <div className="z-10">􀊊</div>
             <div className="absolute inset-0 z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute inset-0 z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             type="button"
             onClick={handlePausePlay}
             className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center"
+            whileTap={{ scale: 0.9 }} // Scale down on click
           >
             <div className="z-10 text-3xl">{paused ? "􀊄" : "􀊆"}</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
@@ -207,16 +221,17 @@ export default function Music() {
                 strokeLinecap="round"
               />
             </svg>
-          </button>
-          <button
+          </motion.button>
+          <motion.button
             type="button"
             onClick={handleNextTrack}
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
+            whileTap={{ scale: 0.9 }} // Scale down on click
           >
             <div className="z-10">􀊌</div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
             <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
-          </button>
+          </motion.button>
         </div>
       </div>
     </>
