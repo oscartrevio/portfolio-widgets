@@ -2,12 +2,14 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { TextMorph } from "../ui/text-morph";
 
 interface Track {
   albumImageUrl: string;
+  href: string;
   title: string;
   artist: string;
   explicit: boolean;
@@ -17,6 +19,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b273f78c98bbf2b3c9e2a764203e",
+    href: "https://open.spotify.com/track/0wXuerDYiBnERgIpbb3JBR",
     title: "Redbone",
     artist: "Childish Gambino",
     explicit: true,
@@ -24,6 +27,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b2739852437d39690c760e108a14",
+    href: "https://open.spotify.com/track/3a3dQOO19moXPeTt2PomoT",
     title: "What You Heard",
     artist: "Sonder",
     explicit: true,
@@ -31,6 +35,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b273175c577a61aa13d4fb4b6534",
+    href: "https://open.spotify.com/track/16umSNZfofRpDqTvf8DIAo",
     title: "Wings",
     artist: "Mac Miller",
     explicit: true,
@@ -38,6 +43,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b273d18fa8f63707115cb1b38f65",
+    href: "https://open.spotify.com/track/4LpUpiYoZ2M3Z1kmhn4EQo",
     title: "Still Beating",
     artist: "Mac DeMarco",
     explicit: false,
@@ -45,6 +51,7 @@ const songs: Track[] = [
   {
     albumImageUrl:
       "https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a",
+    href: "https://open.spotify.com/track/7D0RhFcb3CrfPuTJ0obrod",
     title: "Sparks",
     artist: "Coldplay",
     explicit: false,
@@ -150,17 +157,23 @@ export default function Music() {
               transition={{ duration: 0.3 }}
               className="aspect-square size-16"
             >
-              <Image
-                src={currentTrack.albumImageUrl}
-                alt={"Album cover"}
-                width={100}
-                height={100}
-                onLoad={() => setCoverLoaded(true)}
-                className="size-16 rounded-lg"
-                style={{
-                  boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
-                }}
-              />
+              <Link
+                href={currentTrack.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Image
+                  src={currentTrack.albumImageUrl}
+                  alt={"Album cover"}
+                  width={100}
+                  height={100}
+                  onLoad={() => setCoverLoaded(true)}
+                  className="size-16 rounded-lg"
+                  style={{
+                    boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
+                  }}
+                />
+              </Link>
             </motion.div>
           </AnimatePresence>
           <div className="flex w-full flex-col gap-1 text-nowrap">
