@@ -2,7 +2,7 @@ import "@/styles/main.css";
 
 import type { Metadata } from "next";
 
-import * as Theme from "@/components/theme";
+// import * as Theme from "@/components/theme";
 import { OpenGraph } from "@/lib/og";
 
 import clsx from "clsx";
@@ -125,9 +125,9 @@ export default function RootLayout({
     >
       <body>
         <ViewTransitions>
-          <Theme.Provider>
-            <main className="mx-auto max-w-screen-sm overflow-x-hidden px-4 py-12 md:overflow-x-visible">
-              {/* <div className="pointer-events-none fixed top-0 left-0 z-50 h-32 w-full">
+          {/* <Theme.Provider> */}
+          <main className="mx-auto max-w-screen-sm overflow-x-hidden px-4 py-12 md:overflow-x-visible">
+            {/* <div className="pointer-events-none fixed top-0 left-0 z-50 h-32 w-full">
                 <div
                   className="user-select-none pointer-events-none block h-full dark:hidden"
                   style={{
@@ -136,19 +136,19 @@ export default function RootLayout({
                   }}
                 />
               </div> */}
-              <main>{children}</main>
-              <div className="pointer-events-none fixed bottom-0 left-0 z-50 h-32 w-full rotate-180">
-                {/* Bottom gradient */}
-                <div
-                  className="block h-full dark:hidden"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(180deg, #fff 0%, hsla(0, 0%, 100%, 0.738) 19%, hsla(0, 0%, 100%, 0.541) 34%, hsla(0, 0%, 100%, 0.382) 47%, hsla(0, 0%, 100%, 0.278) 56.5%, hsla(0, 0%, 100%, 0.194) 65%, hsla(0, 0%, 100%, 0.126) 73%, hsla(0, 0%, 100%, 0.075) 80.2%, hsla(0, 0%, 100%, 0.042) 86.1%, hsla(0, 0%, 100%, 0.021) 91%, hsla(0, 0%, 100%, 0.008) 95.2%, hsla(0, 0%, 100%, 0.002) 98.2%, hsla(0, 0%, 100%, 0) 100%)",
-                  }}
-                />
-              </div>
-            </main>
-          </Theme.Provider>
+            <main>{children}</main>
+            <div className="pointer-events-none fixed bottom-0 left-0 z-50 h-32 w-full rotate-180">
+              {/* Bottom gradient */}
+              <div
+                className="block h-full dark:hidden"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(180deg, #fff 0%, hsla(0, 0%, 100%, 0.738) 19%, hsla(0, 0%, 100%, 0.541) 34%, hsla(0, 0%, 100%, 0.382) 47%, hsla(0, 0%, 100%, 0.278) 56.5%, hsla(0, 0%, 100%, 0.194) 65%, hsla(0, 0%, 100%, 0.126) 73%, hsla(0, 0%, 100%, 0.075) 80.2%, hsla(0, 0%, 100%, 0.042) 86.1%, hsla(0, 0%, 100%, 0.021) 91%, hsla(0, 0%, 100%, 0.008) 95.2%, hsla(0, 0%, 100%, 0.002) 98.2%, hsla(0, 0%, 100%, 0) 100%)",
+                }}
+              />
+            </div>
+          </main>
+          {/* </Theme.Provider> */}
         </ViewTransitions>
       </body>
     </html>

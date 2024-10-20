@@ -23,19 +23,32 @@ const Switch = () => {
     { label: "light", icon: <Sun width={13} />, active: theme === "light" },
   ];
 
-  const common = "flex items-center justify-center w-6 h-6 rounded transition-all hover:opacity-50";
+  const common =
+    "flex items-center justify-center w-6 h-6 rounded transition-all hover:opacity-50";
 
   return (
     <div className="flex gap-2">
       <span className="flex w-fit items-center overflow-hidden rounded-md border border-border bg-gray-2">
-        <button type="button" onClick={() => setTheme("system")} className={cn(common, theme === "system" ? "bg-gray-4 text-foreground" : "")}>
+        <button
+          type="button"
+          onClick={() => setTheme("system")}
+          className={cn(
+            common,
+            theme === "system" ? "bg-gray-4 text-foreground" : "",
+          )}
+        >
           <Monitor width={13} />
         </button>
       </span>
 
       <span className="flex w-fit items-center gap-0.5 overflow-hidden rounded-md border border-border bg-gray-2">
         {buttons.map(({ label, icon, active }) => (
-          <button type="button" key={label} onClick={() => setTheme(label)} className={cn(common, active ? "bg-gray-4 text-foreground" : "")}>
+          <button
+            type="button"
+            key={label}
+            onClick={() => setTheme(label)}
+            className={cn(common, active ? "bg-gray-4 text-foreground" : "")}
+          >
             {icon}
           </button>
         ))}
@@ -46,7 +59,12 @@ const Switch = () => {
 
 const Provider = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ThemeProvider enableSystem={true} attribute="class" storageKey="theme" defaultTheme="system">
+    <ThemeProvider
+      enableSystem={true}
+      attribute="class"
+      storageKey="theme"
+      defaultTheme="light"
+    >
       {children}
     </ThemeProvider>
   );
