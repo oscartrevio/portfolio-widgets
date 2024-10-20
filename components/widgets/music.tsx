@@ -54,7 +54,8 @@ export default function Music() {
     null,
   );
   const [paused, setPaused] = useState(false);
-  const [progress, setProgress] = useState(0); // State for the progress
+  const [progress, setProgress] = useState(0);
+  const [coverLoaded, setCoverLoaded] = useState(false);
 
   useEffect(() => {
     setCurrentTrackIndex(Math.floor(Math.random() * songs.length));
@@ -128,16 +129,23 @@ export default function Music() {
           }}
         />
         <div className="z-10 flex items-center gap-2">
+          {coverLoaded ? null : (
+            <div className="flex aspect-square size-16 items-center justify-center rounded-lg bg-[#C2C2C2] text-black-a12">
+              􀑪
+            </div>
+          )}
           <Image
             src={currentTrack.albumImageUrl}
             alt={"Album cover"}
             width={100}
             height={100}
+            onLoad={() => setCoverLoaded(true)}
             className="size-16 rounded-lg"
             style={{
               boxShadow: "0px 2px 12px 2.5px rgba(0, 0, 0, 0.32)",
             }}
           />
+
           <div className="flex w-full flex-col gap-1 text-nowrap">
             <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">
               Now Playing
