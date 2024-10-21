@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaBackward, FaForward, FaPause, FaPlay } from "react-icons/fa6";
 
 import { TextMorph } from "../ui/text-morph";
 
@@ -124,26 +125,21 @@ export default function Music() {
 
   return (
     <>
-      <div className="relative flex h-24 items-center justify-between overflow-hidden rounded-3xl p-4 font-sf-pro text-white-a12 will-change-auto">
+      <div className="relative flex h-24 items-center justify-between overflow-hidden rounded-3xl p-4 text-white-a12 will-change-auto">
         <div
-          className="-z-10 absolute inset-0 saturate-200"
+          className="-z-10 absolute inset-0 overflow-hidden saturate-200"
           style={{
             background: `url("${currentTrack.albumImageUrl ?? undefined}") lightgray 50% / cover no-repeat`,
           }}
         />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 overflow-hidden"
           style={{
             background: "rgba(0, 0, 0, 0.50)",
-            backdropFilter: "blur(16px)",
+            backdropFilter: "blur(8px)",
           }}
         />
         <div className="z-10 flex items-center gap-2">
-          {coverLoaded ? null : (
-            <div className="flex aspect-square size-16 items-center justify-center rounded-lg bg-[#C2C2C2] text-black-a12">
-              􀑪
-            </div>
-          )}
           <AnimatePresence mode="popLayout">
             <motion.div
               key={currentTrackIndex}
@@ -176,22 +172,34 @@ export default function Music() {
               </Link>
             </motion.div>
           </AnimatePresence>
-          <div className="flex w-full flex-col gap-1 text-nowrap">
+          <div className="flex w-full flex-col gap-1 text-nowrap tracking-tight">
             <h1 className="bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">
               Now Playing
             </h1>
             <span className="text-nowrap leading-tight">
-              <span className="flex items-baseline gap-1">
-                <TextMorph className="items-baseline gap-1 text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-base text-transparent bg-blend-normal">
+              <span className="flex items-baseline gap-1.5">
+                <TextMorph className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-transparent bg-blend-normal">
                   {currentTrack.title}
                 </TextMorph>
                 {currentTrack.explicit && (
                   <span className="text-sm text-white-a12 opacity-50 mix-blend-overlay">
-                    􀂝
+                    <svg
+                      viewBox="0 0 72 72"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-3 w-3 fill-current opacity-50 mix-blend-overlay"
+                    >
+                      <title>Explicit</title>
+                      <path
+                        fill-rule="evenodd"
+                        clip-rule="evenodd"
+                        d="M58.6914 71.1914H12.4512C4.15038 71.1914 0 67.0899 0 58.8867V12.3047C0 4.10159 4.15038 0 12.4512 0H58.6914C67.041 0 71.1426 4.10159 71.1426 12.3047V58.8867C71.1426 67.0899 67.041 71.1914 58.6914 71.1914ZM22.998 49.2187C22.998 51.6601 24.2187 53.3202 26.5624 53.3202H45.2148C46.9238 53.3202 48.1933 52.1972 48.1933 50.3905C48.1933 48.5351 46.9238 47.4609 45.2148 47.4609H30.2245V37.6464H44.1405C45.8495 37.6464 47.1191 36.7187 47.1191 34.912C47.1191 33.0566 45.8495 32.08 44.1405 32.08H30.2245V22.7538H45.2148C46.9238 22.7538 48.1933 21.5819 48.1933 19.8241C48.1933 17.9198 46.9238 16.8945 45.2148 16.8945H26.5624C24.2187 16.8945 22.998 18.5546 22.998 20.996V49.2187Z"
+                      />
+                    </svg>
                   </span>
                 )}
               </span>
-              <TextMorph className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-transparent bg-blend-normal">
+              <TextMorph className="text-nowrap bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-sm text-transparent bg-blend-normal">
                 {currentTrack.artist}
               </TextMorph>
             </span>
@@ -205,9 +213,10 @@ export default function Music() {
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
             whileTap={{ scale: 0.9 }}
           >
-            <div className="z-10">􀊊</div>
+            <div className="z-10 mr-0.5">
+              <FaBackward />
+            </div>
             <div className="absolute inset-0 z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
-            <div className="absolute inset-0 z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
           </motion.button>
           <motion.button
             type="button"
@@ -215,9 +224,10 @@ export default function Music() {
             className="relative flex size-12 items-center justify-center overflow-hidden rounded-full text-center"
             whileTap={{ scale: 0.9 }}
           >
-            <div className="z-10 text-3xl">{paused ? "􀊄" : "􀊆"}</div>
+            <div className="z-10 text-2xl">
+              {paused ? <FaPlay className="ml-1" /> : <FaPause />}
+            </div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
-            <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
             <svg
               className="-rotate-90 absolute top-0 left-0 h-full w-full"
               viewBox="0 0 100 100"
@@ -250,9 +260,10 @@ export default function Music() {
             className="relative flex size-9 items-center justify-center overflow-hidden rounded-full text-center"
             whileTap={{ scale: 0.9 }}
           >
-            <div className="z-10">􀊌</div>
+            <div className="z-10 ml-0.5">
+              <FaForward />
+            </div>
             <div className="absolute z-0 h-full w-full bg-[#C2C2C2] opacity-45 mix-blend-overlay" />
-            <div className="absolute z-0 h-full w-full bg-[#7F7F7F] opacity-20 mix-blend-luminosity" />
           </motion.button>
         </div>
       </div>

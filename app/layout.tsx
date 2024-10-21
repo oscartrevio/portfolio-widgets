@@ -7,7 +7,7 @@ import { OpenGraph } from "@/lib/og";
 
 import clsx from "clsx";
 import { ViewTransitions } from "next-view-transitions";
-import { EB_Garamond, Inter } from "next/font/google";
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 export const metadata: Metadata = {
@@ -22,94 +22,47 @@ const inter = Inter({
 const sfPro = localFont({
   src: [
     {
-      path: "fonts/sf-pro-display/SF-Pro-Display-UltralightItalic.otf",
-      weight: "200",
-      style: "italic",
-    },
-    {
-      path: "fonts/sf-pro-display/SF-Pro-Display-LightItalic.otf",
-      weight: "300",
-      style: "italic",
-    },
-    {
-      path: "fonts/sf-pro-display/SF-Pro-Display-RegularItalic.otf",
+      path: "fonts/sf-pro-display/SF-Pro-Display-RegularItalic.woff2",
       weight: "400",
       style: "italic",
     },
     {
-      path: "fonts/sf-pro-display/SF-Pro-Display-MediumItalic.otf",
+      path: "fonts/sf-pro-display/SF-Pro-Display-MediumItalic.woff2",
       weight: "500",
       style: "italic",
     },
     {
-      path: "fonts/sf-pro-display/SF-Pro-Display-SemiboldItalic.otf",
+      path: "fonts/sf-pro-display/SF-Pro-Display-SemiboldItalic.woff2",
       weight: "600",
       style: "italic",
     },
     {
-      path: "fonts/sf-pro-display/SF-Pro-Display-BoldItalic.otf",
+      path: "fonts/sf-pro-display/SF-Pro-Display-BoldItalic.woff2",
       weight: "700",
       style: "italic",
     },
     {
-      path: "fonts/sf-pro-display/SF-Pro-Display-BlackItalic.otf",
-      weight: "800",
-      style: "italic",
-    },
-    {
-      path: "fonts/sf-pro-display/SF-Pro-Display-HeavyItalic.otf",
-      weight: "900",
-      style: "italic",
-    },
-    {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Ultralight.otf",
-      weight: "200",
-      style: "normal",
-    },
-    {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Light.otf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Regular.otf",
+      path: "/fonts/sf-pro-display/SF-Pro-Display-Regular.woff2",
       weight: "400",
       style: "normal",
     },
     {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Medium.otf",
+      path: "/fonts/sf-pro-display/SF-Pro-Display-Medium.woff2",
       weight: "500",
       style: "normal",
     },
     {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Semibold.otf",
+      path: "/fonts/sf-pro-display/sf-pro-text-semibold-webfont.woff2",
       weight: "600",
       style: "normal",
     },
     {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Bold.otf",
+      path: "/fonts/sf-pro-display/SF-Pro-Display-Bold.woff2",
       weight: "700",
-      style: "normal",
-    },
-    {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Black.otf",
-      weight: "800",
-      style: "normal",
-    },
-    {
-      path: "/fonts/sf-pro-display/SF-Pro-Display-Heavy.otf",
-      weight: "900",
       style: "normal",
     },
   ],
   variable: "--font-sf-pro",
-});
-
-const newsreader = EB_Garamond({
-  subsets: ["latin"],
-  style: "italic",
-  display: "swap",
-  variable: "--font-serif",
 });
 
 export default function RootLayout({
@@ -118,11 +71,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(inter.className, newsreader.variable, sfPro.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={clsx(inter.className, sfPro.variable)}
+      suppressHydrationWarning
+    >
       <body>
         <ViewTransitions>
           {/* <Theme.Provider> */}
-          <main className="mx-auto max-w-screen-sm overflow-x-hidden px-4 py-12 md:overflow-x-visible">
+          <main className="mx-auto max-w-screen-xs overflow-x-hidden px-4 py-12 font-inter md:overflow-x-visible">
             {/* <div className="pointer-events-none fixed top-0 left-0 z-50 h-32 w-full">
                 <div
                   className="user-select-none pointer-events-none block h-full dark:hidden"

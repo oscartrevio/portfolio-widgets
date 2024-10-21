@@ -14,10 +14,12 @@ const config: Config = {
   theme: {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
-      serif: ["var(--font-serif)"],
       "sf-pro": ["var(--font-sf-pro)"],
     },
     extend: {
+      screens: {
+        xs: "500px",
+      },
       backgroundImage: {
         overlay: "linear-gradient(rgba(255,255,255,1), rgba(255,255,255,1))",
       },
@@ -156,7 +158,6 @@ const config: Config = {
       },
       fontFamily: {
         inter: ["var(--font-inter)"],
-        apple: ["var(--font-apple)"],
       },
       borderRadius: {
         small: "var(--radius-small)",
