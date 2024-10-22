@@ -14,7 +14,12 @@ interface Track {
 export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
   return (
     <div className="z-10 flex h-full w-full items-center gap-2 truncate">
-      <Link href={currentTrack.href} target="_blank" rel="noopener noreferrer">
+      <Link
+        href={currentTrack.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="relative overflow-hidden"
+      >
         <Image
           src={currentTrack.albumImageUrl}
           alt={"Album cover"}
@@ -52,7 +57,7 @@ export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
 
 export function BackgroundImage({ currentTrack }: { currentTrack: Track }) {
   return (
-    <div className="absolute inset-0 overflow-hidden rounded-3xl">
+    <div className="absolute inset-0 rounded-3xl">
       <div
         className="absolute inset-0 overflow-hidden rounded-3xl"
         style={{
@@ -61,10 +66,7 @@ export function BackgroundImage({ currentTrack }: { currentTrack: Track }) {
       />
       <Blurhash
         hash={currentTrack.blurHash}
-        resolutionX={32}
-        resolutionY={32}
-        punch={1}
-        className="-z-10 h-full w-full saturate-150"
+        className="-z-10 aspect-square h-auto w-full saturate-150"
       />
       {/* <Image
         src={currentTrack.albumImageUrl}
