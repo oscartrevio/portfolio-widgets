@@ -71,11 +71,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={clsx(inter.className, sfPro.variable)}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={clsx(inter.className, sfPro.variable)} suppressHydrationWarning>
       <body>
         <ViewTransitions>
           {/* <Theme.Provider> */}

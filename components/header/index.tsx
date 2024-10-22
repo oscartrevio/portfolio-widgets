@@ -11,15 +11,12 @@ const Header = ({ className }: HeaderProps) => {
       <h1>Oscar Treviño</h1>
       <h2 className="text-[#9E9E9E] text-sm">Design Engineer</h2>
       <p className="mt-4">
-        Crafting <IoHammerOutline className="inline text-2xl" /> seamless
-        digital experiences and designing intuitive, human-centered{" "}
-        <PiHandTap className="inline text-2xl" /> interfaces. Obsessed with{" "}
-        <PiSparkle className="inline text-2xl" /> simplicity, innovation, and
-        the smallest details.
+        Crafting <IoHammerOutline className="inline text-2xl" /> seamless digital experiences and designing intuitive, human-centered{" "}
+        <PiHandTap className="inline text-2xl" /> interfaces. Obsessed with <PiSparkle className="inline text-2xl" /> simplicity, innovation, and the smallest
+        details.
       </p>
       <p className="mt-2">
-        BS in <PiBookBookmark className="inline text-2xl" /> Computer Science at
-        Tecnológico de Monterrey.
+        BS in <PiBookBookmark className="inline text-2xl" /> Computer Science at Tecnológico de Monterrey.
       </p>
     </div>
   );

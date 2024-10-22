@@ -38,12 +38,6 @@ export default function Location() {
           draggable="false"
           className="absolute inset-0 z-10 h-full w-full"
         />
-        <div className="absolute inset-0 flex items-center justify-center text-black-a12">
-          <div className="flex flex-col items-center gap-1">
-            <h2 className="font-bold text-2xl">Monterrey, NL</h2>
-            <p className="text-lg">México</p>
-          </div>
-        </div>
         <div aria-hidden>
           <div className="absolute top-1/2 left-1/3 z-10 h-6 w-6 animate-marker rounded-full bg-blue-500" />
           <div className="absolute top-1/2 left-1/3 z-10 h-6 w-6 rounded-full border-4 border-neutral-50 bg-blue-500 shadow-xl" />
