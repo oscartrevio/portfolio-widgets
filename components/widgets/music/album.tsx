@@ -13,12 +13,12 @@ interface Track {
 
 export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
   return (
-    <div className="z-10 flex h-full w-full items-center gap-2 truncate">
+    <div className="z-10 flex h-full w-full items-center gap-2">
       <Link
         href={currentTrack.href}
         target="_blank"
         rel="noopener noreferrer"
-        className="relative overflow-hidden"
+        className=""
       >
         <Image
           src={currentTrack.albumImageUrl}
