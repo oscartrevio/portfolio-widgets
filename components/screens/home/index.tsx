@@ -1,7 +1,7 @@
 import Header from "@/components/header";
 import * as FadeIn from "@/components/motion/staggers/fade";
 import Movie from "@/components/widgets/movie";
-import Music from "@/components/widgets/music";
+import MusicPlayer from "@/components/widgets/music/music-player";
 
 import Location from "../../widgets/location";
 
@@ -41,7 +41,7 @@ export default function Home() {
         </FadeIn.Item>
         <Spacer />
         <FadeIn.Item>
-          <Music />
+          <MusicPlayer />
         </FadeIn.Item>
         <Spacer />
         <FadeIn.Item>
