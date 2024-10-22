@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { BiSolidMoviePlay } from "react-icons/bi";
 import { FaStar, FaStarHalf } from "react-icons/fa6";
 import convert from "xml-js";
 
@@ -30,14 +31,25 @@ export default async function Movie() {
   return (
     <>
       <div className="relative flex h-48 w-1/2 flex-col gap-1 overflow-hidden rounded-3xl bg-[#202830] p-5 text-white-a12 will-change-auto">
-        {posterUrl && (
-          <Link href={link} target="_blank" rel="noopener noreferrer">
-            <Image src={posterUrl} alt={`${title} Poster`} width={100} height={150} loading="eager" className="aspect-auto h-28 w-auto rounded-sm shadow-lg" />
-          </Link>
-        )}
+        <div className="flex justify-between">
+          {posterUrl && (
+            <Link href={link} target="_blank" rel="noopener noreferrer">
+              <Image
+                src={posterUrl}
+                alt={`${title} Poster`}
+                width={100}
+                height={150}
+                loading="eager"
+                className="aspect-auto h-28 w-auto rounded-sm shadow-lg"
+              />
+            </Link>
+          )}
+          <BiSolidMoviePlay className="text-2xl text-white" />
+        </div>
         <div>
           <h2 className="truncate font-semibold">
-            {title} <span className="font-normal text-gray-400 text-xs">{year}</span>
+            {title}{" "}
+            <span className="font-normal text-gray-400 text-xs">{year}</span>
           </h2>
           <p className="flex text-[#00C030] text-sm">
             {Array.from({ length: fullStars }, () => (
