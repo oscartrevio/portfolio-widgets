@@ -40,7 +40,7 @@ export default async function Movie() {
                 width={100}
                 height={150}
                 loading="eager"
-                className="aspect-auto h-28 w-auto rounded-sm shadow-lg"
+                className="aspect-auto h-28 w-auto rounded-sm shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
               />
             </Link>
           )}
