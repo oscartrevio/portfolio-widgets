@@ -3,7 +3,9 @@ import * as FadeIn from "@/components/motion/staggers/fade";
 import Movie from "@/components/widgets/movie";
 import Music from "@/components/widgets/music";
 
-const Spacer = () => <div style={{ marginTop: "24px" }} />;
+import Location from "../../widgets/location";
+
+const Spacer = () => <div style={{ marginTop: "12px" }} />;
 
 export default function Home() {
   return (
@@ -35,11 +37,15 @@ export default function Home() {
         </FadeIn.Item>
         <Spacer />
         <FadeIn.Item>
+          <Location />
+        </FadeIn.Item>
+        <Spacer />
+        <FadeIn.Item>
           <Music />
         </FadeIn.Item>
         <Spacer />
         <FadeIn.Item>
-          <div className="flex gap-6">
+          <div className="flex gap-3">
             <Movie />
             <Movie />
           </div>

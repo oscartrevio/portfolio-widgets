@@ -164,6 +164,78 @@ const config: Config = {
         base: "var(--radius-base)",
         large: "var(--radius-large)",
       },
+      animation: {
+        intro: "intro 0.3s forwards ease-in-out",
+        cloud: "cloud 120s linear infinite",
+        marker: "marker 4s ease-out infinite",
+        plane: "plane 35s linear infinite",
+        "plane-shadow": "plane-shadow 35s linear infinite",
+      },
+      keyframes: {
+        intro: {
+          "0%": {
+            transform: "translateY(10px)",
+            opacity: "0",
+          },
+          "100%": {
+            transform: "translateY(0px)",
+            opacity: "1",
+          },
+        },
+        cloud: {
+          "0%": {
+            transform: "translate(-350px, -350px)",
+          },
+          "25%": {
+            transform: "translate(350px, 350px)",
+          },
+          "50%": {
+            transform: "translate(600px, -350px)",
+          },
+          "75%": {
+            transform: "translate(-400px, 350px)",
+          },
+          "100%": {
+            transform: "translate(-350px, -350px)",
+          },
+        },
+        marker: {
+          "0%": {
+            scale: "1",
+            opacity: "0.5",
+          },
+          "35%": {
+            scale: "3",
+            opacity: "0",
+          },
+          "100%": {
+            scale: "3",
+            opacity: "0",
+          },
+        },
+        plane: {
+          "0%": {
+            transform: "translate(25px, 300px) rotate(30deg)",
+          },
+          "40%": {
+            transform: "translate(325px, -80px) rotate(30deg)",
+          },
+          "100%": {
+            transform: "translate(325px, -80px) rotate(30deg)",
+          },
+        },
+        "plane-shadow": {
+          "0%": {
+            transform: "translate(25px, 300px) rotate(30deg)",
+          },
+          "40%": {
+            transform: "translate(325px, -80px) rotate(30deg)",
+          },
+          "100%": {
+            transform: "translate(325px, -80px) rotate(30deg)",
+          },
+        },
+      },
     },
   },
   plugins: [

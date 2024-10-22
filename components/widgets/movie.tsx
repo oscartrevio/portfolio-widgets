@@ -29,7 +29,7 @@ export default async function Movie() {
 
   return (
     <>
-      <div className="relative flex h-48 w-1/2 flex-col gap-1 overflow-hidden rounded-3xl bg-[#202830] p-4 text-white-a12 will-change-auto">
+      <div className="relative flex h-48 w-1/2 flex-col gap-1 overflow-hidden rounded-3xl bg-[#202830] p-5 text-white-a12 will-change-auto">
         {posterUrl && (
           <Link href={link} target="_blank" rel="noopener noreferrer">
             <Image
@@ -37,12 +37,13 @@ export default async function Movie() {
               alt={`${title} Poster`}
               width={100}
               height={150}
+              loading="eager"
               className="aspect-auto h-28 w-auto rounded-sm shadow-lg"
             />
           </Link>
         )}
         <div>
-          <h2 className="font-semibold">
+          <h2 className="truncate font-semibold">
             {title}{" "}
             <span className="font-normal text-gray-400 text-xs">{year}</span>
           </h2>

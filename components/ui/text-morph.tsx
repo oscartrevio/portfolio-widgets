@@ -12,7 +12,12 @@ type TextMorphProps = {
   style?: React.CSSProperties;
 };
 
-export function TextMorph({ children, as: Component = "p", className, style }: TextMorphProps) {
+export function TextMorph({
+  children,
+  as: Component = "p",
+  className,
+  style,
+}: TextMorphProps) {
   const uniqueId = useId();
 
   const characters = useMemo(() => {
@@ -38,7 +43,7 @@ export function TextMorph({ children, as: Component = "p", className, style }: T
           <motion.span
             key={character.id}
             layoutId={character.id}
-            className={cn("inline-block", className)}
+            className={cn("inline-block text-nowrap", className)}
             aria-hidden="true"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
