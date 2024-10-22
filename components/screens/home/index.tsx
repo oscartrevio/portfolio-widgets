@@ -5,7 +5,7 @@ import Movie from "@/components/widgets/movie";
 import MusicPlayer from "@/components/widgets/music/music-player";
 import Run from "@/components/widgets/run";
 
-const Spacer = () => <div style={{ marginTop: "12px" }} />;
+const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
 export default function Home() {
   return (
@@ -51,9 +51,9 @@ export default function Home() {
           </div>
         </FadeIn.Item>
         <Spacer />
-        {/* <FadeIn.Item>
+        <FadeIn.Item>
           <Run />
-        </FadeIn.Item> */}
+        </FadeIn.Item>
       </FadeIn.Container>
     </>
   );

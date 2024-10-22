@@ -61,7 +61,7 @@ export function BackgroundImage({ currentTrack }: { currentTrack: Track }) {
       <div
         className="absolute inset-0 overflow-hidden rounded-3xl"
         style={{
-          background: "rgba(0, 0, 0, 0.35)",
+          background: "rgba(0, 0, 0, 0.30)",
         }}
       />
       <Blurhash

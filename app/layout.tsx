@@ -71,11 +71,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={clsx(inter.className, sfPro.variable)} suppressHydrationWarning>
+    <html
+      lang="en"
+      className={clsx(inter.className, sfPro.variable)}
+      suppressHydrationWarning
+    >
       <body>
         <ViewTransitions>
           {/* <Theme.Provider> */}
-          <main className="mx-auto max-w-screen-xs overflow-x-hidden px-4 py-12 font-inter md:overflow-x-visible">
+          <main className="mx-auto max-w-screen-xs overflow-x-hidden px-4 py-10 font-inter md:overflow-x-visible">
             {/* <div className="pointer-events-none fixed top-0 left-0 z-50 h-32 w-full">
                 <div
                   className="user-select-none pointer-events-none block h-full dark:hidden"
