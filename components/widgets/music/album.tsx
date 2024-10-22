@@ -1,8 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Blurhash } from "react-blurhash";
 
 interface Track {
   albumImageUrl: string;
+  blurHash: string;
   href: string;
   title: string;
   artist: string;
@@ -30,6 +32,14 @@ export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
         <span className="leading-tight">
           <h2 className="truncate bg-gradient-to-r from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-transparent">
             {currentTrack.title}
+            {/* TODO: Add explicit icon */}
+            {/* <span>
+              {currentTrack.explicit && (
+                <span className="-mt-1 inline-block h-4 w-4">
+                  <Image src={Explicit} alt="Explicit" width={16} height={16} />
+                </span>
+              )}
+            </span> */}
           </h2>
           <h2 className="truncate bg-gradient-to-r from-[rgba(255,255,255,0.5)] to-[rgba(255,255,255,0.5)] bg-clip-text font-normal text-sm text-transparent">
             {currentTrack.artist}
@@ -43,21 +53,27 @@ export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
 export function BackgroundImage({ currentTrack }: { currentTrack: Track }) {
   return (
     <div className="absolute inset-0 overflow-hidden rounded-3xl">
-      <Image
+      <div
+        className="absolute inset-0 overflow-hidden rounded-3xl"
+        style={{
+          background: "rgba(0, 0, 0, 0.35)",
+        }}
+      />
+      <Blurhash
+        hash={currentTrack.blurHash}
+        resolutionX={32}
+        resolutionY={32}
+        punch={1}
+        className="-z-10 h-full w-full saturate-150"
+      />
+      {/* <Image
         src={currentTrack.albumImageUrl}
         alt="Background"
         layout="fill"
         objectFit="cover"
         className="-z-10 saturate-200"
         loading="eager" // Preload on the server
-      />
-      <div
-        className="absolute inset-0 overflow-hidden rounded-3xl"
-        style={{
-          background: "rgba(0, 0, 0, 0.50)",
-          backdropFilter: "blur(8px)",
-        }}
-      />
+      /> */}
     </div>
   );
 }
