@@ -19,6 +19,11 @@ const nextConfig = {
         hostname: "a.ltrbxd.com",
         port: "",
       },
+      {
+        protocol: "https",
+        hostname: "i.gr-assets.com",
+        port: "",
+      },
     ],
   },
   reactStrictMode: true,

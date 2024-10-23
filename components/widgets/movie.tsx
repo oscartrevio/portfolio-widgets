@@ -5,6 +5,7 @@ import { FaStar, FaStarHalf } from "react-icons/fa6";
 import convert from "xml-js";
 
 export const dynamic = "force-dynamic";
+export const revalidate = 1800;
 
 export default async function Movie() {
   const response = await fetch("https://letterboxd.com/oscartrevio/rss/", {
