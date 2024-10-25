@@ -170,6 +170,7 @@ const config: Config = {
         marker: "marker 4s ease-out infinite",
         plane: "plane 35s linear infinite",
         "plane-shadow": "plane-shadow 35s linear infinite",
+        "blurred-fade-in": "blurred-fade-in 0.9s ease-in-out",
       },
       keyframes: {
         intro: {
@@ -233,6 +234,16 @@ const config: Config = {
           },
           "100%": {
             transform: "translate(325px, -80px) rotate(30deg)",
+          },
+        },
+        "blurred-fade-in": {
+          "0%": {
+            filter: "blur(5px)",
+            opacity: "0",
+          },
+          "100%": {
+            filter: "blur(0)",
+            opacity: "1",
           },
         },
       },

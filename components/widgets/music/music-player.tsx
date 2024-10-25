@@ -23,10 +23,6 @@ export default function MusicPlayer() {
   }, [tracks.length]);
 
   useEffect(() => {
-    setProgress(0);
-  }, []);
-
-  useEffect(() => {
     let interval: NodeJS.Timeout;
 
     if (!paused) {
@@ -46,12 +42,14 @@ export default function MusicPlayer() {
 
   const handleNextTrack = useCallback(() => {
     setCurrentTrackIndex((prevIndex) => (prevIndex + 1) % tracks.length);
+    setProgress(0.1);
   }, [tracks.length]);
 
   const handlePreviousTrack = useCallback(() => {
     setCurrentTrackIndex((prevIndex) =>
       prevIndex === 0 ? tracks.length - 1 : prevIndex - 1,
     );
+    setProgress(0.1);
   }, [tracks.length]);
 
   const handlePausePlay = useCallback(() => {

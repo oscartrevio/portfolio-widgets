@@ -81,11 +81,11 @@ export default async function Run() {
   return (
     <div
       className={cn(
-        "relative flex h-24 w-full flex-grow-0 cursor-pointer select-none items-center justify-between overflow-hidden rounded-3xl bg-[#F6F6F6] p-4 text-black-a12 will-change-auto hover:cursor-pointer",
+        "relative flex h-24 w-full flex-grow-0 cursor-pointer select-none items-center justify-between overflow-hidden rounded-3xl bg-[#F5F5F7] p-4 text-black-a12 will-change-auto hover:cursor-pointer",
       )}
     >
       <div className="z-20 flex items-center gap-4">
-        <div className="h-14 select-none rounded-full bg-[#00CA47] p-3">
+        <div className="h-14 select-none rounded-full bg-[#086CFC] p-3">
           <FaRunning className="h-full w-auto text-white-a12" />
         </div>
 

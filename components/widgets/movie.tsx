@@ -52,9 +52,11 @@ export default async function Movie() {
           <BiSolidMoviePlay className="text-2xl text-white" />
         </div>
         <div>
-          <h2 className="truncate font-semibold">
+          <h2 className="truncate bg-gradient-to-r from-[rgba(255,255,255,0.8)] to-[rgba(255,255,255,0.8)] bg-clip-text font-semibold text-transparent">
             {title}{" "}
-            <span className="font-normal text-gray-400 text-xs">{year}</span>
+            <span className="truncate bg-gradient-to-r from-[rgba(255,255,255,0.3)] to-[rgba(255,255,255,0.3)] bg-clip-text font-normal text-transparent text-xs">
+              {year}
+            </span>
           </h2>
           <p className="flex text-[#00C030] text-sm">
             {Array.from({ length: fullStars }, () => (

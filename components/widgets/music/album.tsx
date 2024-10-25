@@ -18,7 +18,7 @@ export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
         href={currentTrack.href}
         target="_blank"
         rel="noopener noreferrer"
-        className=""
+        className="flex-shrink-0"
       >
         <Image
           src={currentTrack.albumImageUrl}
@@ -26,7 +26,7 @@ export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
           width={100}
           height={100}
           loading="eager" // Load album cover image on the server
-          className="size-16 rounded-lg shadow-lg transition-transform duration-200 ease-in-out hover:scale-105"
+          className="size-16 rounded-lg shadow-lg"
         />
       </Link>
 

@@ -40,7 +40,7 @@ export default function Location() {
         />
         <div aria-hidden>
           <div className="absolute top-1/2 left-1/3 z-10 h-6 w-6 animate-marker rounded-full bg-blue-500" />
-          <div className="absolute top-1/2 left-1/3 z-10 h-6 w-6 rounded-full border-4 border-neutral-50 bg-blue-500 shadow-xl" />
+          <div className="absolute top-1/2 left-1/3 z-10 h-6 w-6 rounded-full border-4 border-neutral-50 bg-blue-500 shadow-sm" />
         </div>
         <h1 className="absolute right-0 bottom-0 z-30 flex items-center gap-1 bg-gradient-to-r from-[rgba(0,0,0,0.8)] to-[rgba(0,0,0,0.8)] bg-clip-text px-4 py-3 font-semibold text-transparent tracking-tight">
           <FaLocationArrow className="inline items-center text-[rgba(0,0,0,0.8)] " />
