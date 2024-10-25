@@ -90,8 +90,7 @@ export default function RootLayout({
                 />
               </div> */}
             <main>{children}</main>
-            <div className="pointer-events-none fixed bottom-0 left-0 z-50 h-32 w-full rotate-180">
-              {/* Bottom gradient */}
+            <div className="pointer-events-none fixed bottom-0 left-0 z-50 h-16 w-full rotate-180">
               <div
                 className="block h-full dark:hidden"
                 style={{

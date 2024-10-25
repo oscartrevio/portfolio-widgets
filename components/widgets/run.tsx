@@ -86,7 +86,7 @@ export default async function Run() {
     >
       <div className="z-20 flex items-center gap-4">
         <div className="h-14 select-none rounded-full bg-[#00CA47] p-3">
-          <FaRunning className="h-full w-auto text-white" />
+          <FaRunning className="h-full w-auto text-white-a12" />
         </div>
 
         <div className="select-none">
