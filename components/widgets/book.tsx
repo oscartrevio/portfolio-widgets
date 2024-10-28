@@ -20,20 +20,10 @@ export default async function Book() {
     }),
   );
 
-  // Debugging: Log the entire bookData object to verify its structure
-  console.log("Parsed Book Data:", bookData);
-
-  // Safely check if the items exist within the parsed object
   const items = bookData?.rss?.channel?.item;
-  if (!items || items.length === 0) {
-    console.log("No items found in RSS feed.");
-    return <p>No book data found.</p>; // Handle the case where no book is found
-  }
 
-  // If there's only one book, items might not be an array, so handle both cases
   const book = Array.isArray(items) ? items[0] : items;
 
-  // Extract the necessary book details
   const title = book.title?._text;
   const author = book.author_name?._text;
   const link = book.link?._cdata;
