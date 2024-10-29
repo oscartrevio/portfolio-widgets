@@ -2,6 +2,7 @@ import Header from "@/components/header";
 import * as FadeIn from "@/components/motion/staggers/fade";
 import Social from "@/components/ui/social";
 import Book from "@/components/widgets/book";
+import Folder from "@/components/widgets/folder";
 import Location from "@/components/widgets/location";
 import Movie from "@/components/widgets/movie";
 import MusicPlayer from "@/components/widgets/music/music-player";
@@ -44,6 +45,13 @@ export default function Home() {
         <Spacer />
         <FadeIn.Item>
           <MusicPlayer />
+        </FadeIn.Item>
+        <Spacer />
+        <FadeIn.Item>
+          <div className="flex gap-3">
+            <Folder />
+            <Folder />
+          </div>
         </FadeIn.Item>
         <Spacer />
         <FadeIn.Item>
