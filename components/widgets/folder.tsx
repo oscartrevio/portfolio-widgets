@@ -80,14 +80,14 @@ export default function Folder() {
                 }
               : {}
           }
-          whileHover={{ transform: "perspective(1100px) rotateX(-10deg)" }}
+          //   whileHover={{ transform: "perspective(1100px) rotateX(-10deg)" }}
           className="absolute bottom-0 left-0 grid h-40 w-full origin-bottom place-items-center rounded-[22px] bg-gradient-to-br from-[#ff7b7b] to-[#a70000] shadow-[0_-1px_1px_1px_rgba(0,0,0,0.06),0_-6px_6px_3px_rgba(0,0,0,0.06),0_-3px_3px_1.5px_rgba(0,0,0,0.06),0_-12px_12px_6px_rgba(0,0,0,0.06),0_-24px_24px_12px_rgba(0,0,0,0.06)]"
         >
           <div className="relative size-3/4 overflow-hidden bg-[#5a0000] [mask:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iY3VycmVudENvbG9yIj4KICA8cGF0aCBkPSJtMTEuNjQ1IDIwLjkxLS4wMDctLjAwMy0uMDIyLS4wMTJhMTUuMjQ3IDE1LjI0NyAwIDAgMS0uMzgzLS4yMTggMjUuMTggMjUuMTggMCAwIDEtNC4yNDQtMy4xN0M0LjY4OCAxNS4zNiAyLjI1IDEyLjE3NCAyLjI1IDguMjUgMi4yNSA1LjMyMiA0LjcxNCAzIDcuNjg4IDNBNS41IDUuNSAwIDAgMSAxMiA1LjA1MiA1LjUgNS41IDAgMCAxIDE2LjMxMyAzYzIuOTczIDAgNS40MzcgMi4zMjIgNS40MzcgNS4yNSAwIDMuOTI1LTIuNDM4IDcuMTExLTQuNzM5IDkuMjU2YTI1LjE3NSAyNS4xNzUgMCAwIDEtNC4yNDQgMy4xNyAxNS4yNDcgMTUuMjQ3IDAgMCAxLS4zODMuMjE5bC0uMDIyLjAxMi0uMDA3LjAwNC0uMDAzLjAwMWEuNzUyLjc1MiAwIDAgMS0uNzA0IDBsLS4wMDMtLjAwMVoiIC8+Cjwvc3ZnPgo=)] [maskPosition:center] [maskRepeat:no-repeat]">
             <motion.div
               initial={{ y: 40, x: -60 }}
               animate={isOpen ? { y: -250, x: -200 } : {}}
-              whileHover={{ y: -250, x: -200 }}
+              //   whileHover={{ y: -250, x: -200 }}
               className="absolute size-[500px] rounded-full bg-[radial-gradient(at_center,rgba(255,186,186,1),rgba(255,186,186,0.3)_100%)]"
             />
             <motion.div
