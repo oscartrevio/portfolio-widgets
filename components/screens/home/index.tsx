@@ -10,7 +10,16 @@ import Run from "@/components/widgets/run";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
-export default function Home() {
+export default async function Home() {
+  const response = await fetch(
+    "http://localhost:3000/api/spotify?mode=top-tracks",
+    {
+      cache: "no-store",
+    },
+  );
+  const data = await response.json();
+  console.log(data);
+
   return (
     // <FadeIn.Container>
     //   <FadeIn.Item>
@@ -47,13 +56,13 @@ export default function Home() {
           <MusicPlayer />
         </FadeIn.Item>
         <Spacer />
-        <FadeIn.Item>
+        {/* <FadeIn.Item>
           <div className="flex gap-3">
             <Folder />
             <Folder />
           </div>
         </FadeIn.Item>
-        <Spacer />
+        <Spacer /> */}
         <FadeIn.Item>
           <div className="flex gap-3">
             <Book />
@@ -69,6 +78,7 @@ export default function Home() {
           <Social />
         </FadeIn.Item>
         <Spacer />
+        {/* <div>{JSON.stringify(data)}</div> */}
       </FadeIn.Container>
     </>
   );
