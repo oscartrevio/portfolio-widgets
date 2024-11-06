@@ -15,7 +15,7 @@ export default function MusicPlayer() {
   const [paused, setPaused] = useState(false);
   const [progress, setProgress] = useState(0);
 
-  const tracks = useMemo(() => songs, []);
+  const tracks: typeof songs = useMemo(() => songs, []);
 
   useEffect(() => {
     // Set a random track on the initial render only

@@ -1,3 +1,4 @@
+import { encode } from "blurhash";
 import Image from "next/image";
 import Link from "next/link";
 import { Blurhash } from "react-blurhash";
@@ -69,7 +70,7 @@ export function BackgroundImage({ currentTrack }: { currentTrack: Track }) {
         className="-z-10 aspect-square h-auto w-full saturate-150"
       />
       {/* <Image
-        src={currentTrack.albumImageUrl}
+        src={currentTrack.albumImageUrl ?? ""}
         alt="Background"
         layout="fill"
         objectFit="cover"

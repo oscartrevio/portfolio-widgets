@@ -1,3 +1,15 @@
+// export const songs = async () => {
+//   const response = await fetch(
+//     "http://localhost:3000/api/spotify?mode=top-tracks",
+//     {
+//       cache: "no-store",
+//     },
+//   );
+//   const data = await response.json();
+//   console.log(data);
+//   return data;
+// };
+
 export const songs = [
   {
     albumImageUrl:

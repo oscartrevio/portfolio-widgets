@@ -6,20 +6,12 @@ import Folder from "@/components/widgets/folder";
 import Location from "@/components/widgets/location";
 import Movie from "@/components/widgets/movie";
 import MusicPlayer from "@/components/widgets/music/music-player";
+import NowPlaying from "@/components/widgets/now-playing";
 import Run from "@/components/widgets/run";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;
 
-export default async function Home() {
-  const response = await fetch(
-    "http://localhost:3000/api/spotify?mode=top-tracks",
-    {
-      cache: "no-store",
-    },
-  );
-  const data = await response.json();
-  console.log(data);
-
+export default function Home() {
   return (
     // <FadeIn.Container>
     //   <FadeIn.Item>
@@ -78,7 +70,9 @@ export default async function Home() {
           <Social />
         </FadeIn.Item>
         <Spacer />
-        {/* <div>{JSON.stringify(data)}</div> */}
+        {/* <FadeIn.Item>
+          <NowPlaying />
+        </FadeIn.Item> */}
       </FadeIn.Container>
     </>
   );
