@@ -24,7 +24,9 @@ export default async function Movie() {
   const title = movie["letterboxd:filmTitle"]._text;
   const year = movie["letterboxd:filmYear"]._text;
   const link = movie.link._text;
-  const rating = Number.parseFloat(movie["letterboxd:memberRating"]._text);
+  const rating = Number.parseFloat(
+    movie["letterboxd:memberRating"]?._text || "0",
+  );
   const description = movie.description._cdata;
 
   const posterUrlMatch = description.match(/<img src="([^"]+)"/);
@@ -59,10 +61,11 @@ export default async function Movie() {
             </span>
           </h2>
           <p className="flex text-[#00C030] text-sm">
-            {Array.from({ length: fullStars }, () => (
-              <FaStar key={Math.random()} />
-            ))}
-            {hasHalfStar && <FaStarHalf />}
+            {rating !== null &&
+              Array.from({ length: Math.floor(rating) }).map((_, i) => (
+                <FaStar key={i} />
+              ))}
+            {rating !== null && rating % 1 >= 0.5 && <FaStarHalf />}
           </p>
         </div>
       </div>

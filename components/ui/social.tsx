@@ -21,26 +21,6 @@ const data = [
     url: "#",
     icon: FaXTwitter,
   },
-  {
-    title: "",
-    url: "#",
-    icon: FaSpotify,
-  },
-  {
-    title: "",
-    url: "#",
-    icon: FaLetterboxd,
-  },
-  {
-    title: "",
-    url: "#",
-    icon: FaStrava,
-  },
-  {
-    title: "",
-    url: "#",
-    icon: FaGoodreads,
-  },
 ];
 
 export default function Social() {

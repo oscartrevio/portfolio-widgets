@@ -15,6 +15,7 @@ const config: Config = {
     fontFamily: {
       inter: ["Inter", "sans-serif"],
       "sf-pro": ["var(--font-sf-pro)"],
+      rounded: ["var(--font-sn-pro)"],
     },
     extend: {
       screens: {

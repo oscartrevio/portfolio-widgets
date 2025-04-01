@@ -27,7 +27,7 @@ export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
           width={100}
           height={100}
           loading="eager" // Load album cover image on the server
-          className="size-16 rounded-lg shadow-lg"
+          className="size-16 rounded-lg shadow-lg ransition-transform duration-200 ease-in-out hover:scale-105"
         />
       </Link>
 

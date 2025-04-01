@@ -49,7 +49,7 @@ export default function Location() {
         <div className="pointer-events-none fixed bottom-0 left-0 z-20 h-20 w-full rotate-180">
           {/* Bottom gradient */}
           <div
-            className="block h-full w-full"
+            className="block h-full w-full opacity-80"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, #fff 0%, hsla(0, 0%, 100%, 0.738) 19%, hsla(0, 0%, 100%, 0.541) 34%, hsla(0, 0%, 100%, 0.382) 47%, hsla(0, 0%, 100%, 0.278) 56.5%, hsla(0, 0%, 100%, 0.194) 65%, hsla(0, 0%, 100%, 0.126) 73%, hsla(0, 0%, 100%, 0.075) 80.2%, hsla(0, 0%, 100%, 0.042) 86.1%, hsla(0, 0%, 100%, 0.021) 91%, hsla(0, 0%, 100%, 0.008) 95.2%, hsla(0, 0%, 100%, 0.002) 98.2%, hsla(0, 0%, 100%, 0) 100%)",
