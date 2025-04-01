@@ -2,11 +2,9 @@ import Header from "@/components/header";
 import * as FadeIn from "@/components/motion/staggers/fade";
 import Social from "@/components/ui/social";
 import Book from "@/components/widgets/book";
-import Folder from "@/components/widgets/folder";
 import Location from "@/components/widgets/location";
 import Movie from "@/components/widgets/movie";
 import MusicPlayer from "@/components/widgets/music/music-player";
-import NowPlaying from "@/components/widgets/now-playing";
 import Run from "@/components/widgets/run";
 
 const Spacer = () => <div style={{ marginTop: "24px" }} />;

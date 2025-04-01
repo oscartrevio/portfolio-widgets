@@ -1,4 +1,3 @@
-import { encode } from "blurhash";
 import Image from "next/image";
 import Link from "next/link";
 import { Blurhash } from "react-blurhash";
@@ -15,19 +14,14 @@ interface Track {
 export function TrackInfo({ currentTrack }: { currentTrack: Track }) {
   return (
     <div className="z-10 flex h-full w-full items-center gap-2">
-      <Link
-        href={currentTrack.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex-shrink-0"
-      >
+      <Link href={currentTrack.href} target="_blank" rel="noopener noreferrer" className="flex-shrink-0">
         <Image
           src={currentTrack.albumImageUrl}
           alt={"Album cover"}
           width={100}
           height={100}
           loading="eager" // Load album cover image on the server
-          className="size-16 rounded-lg shadow-lg ransition-transform duration-200 ease-in-out hover:scale-105"
+          className="ransition-transform size-16 rounded-lg shadow-lg duration-200 ease-in-out hover:scale-105"
         />
       </Link>
 
@@ -65,10 +59,7 @@ export function BackgroundImage({ currentTrack }: { currentTrack: Track }) {
           background: "rgba(0, 0, 0, 0.30)",
         }}
       />
-      <Blurhash
-        hash={currentTrack.blurHash}
-        className="-z-10 aspect-square h-auto w-full saturate-150"
-      />
+      <Blurhash hash={currentTrack.blurHash} className="-z-10 aspect-square h-auto w-full saturate-150" />
       {/* <Image
         src={currentTrack.albumImageUrl ?? ""}
         alt="Background"

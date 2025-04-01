@@ -1,29 +1,17 @@
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "@/components/ui/hover-card";
 import { truncate } from "@/lib/utils";
 
 import Image from "next/image";
 
 export default async function NowPlaying() {
-  const response = await fetch(
-    "http://localhost:3000/api/spotify?mode=now-playing",
-    {
-      cache: "no-store",
-    },
-  );
+  const response = await fetch("http://localhost:3000/api/spotify?mode=now-playing", {
+    cache: "no-store",
+  });
   const data = await response.json();
   console.log(data);
   const nowPlaying = data;
 
-  if (
-    !nowPlaying?.songUrl ||
-    !nowPlaying.title ||
-    !nowPlaying.artist ||
-    !nowPlaying.isPlaying
-  ) {
+  if (!nowPlaying?.songUrl || !nowPlaying.title || !nowPlaying.artist || !nowPlaying.isPlaying) {
     return (
       <div className="flex items-center justify-center space-x-2 text-sm sm:justify-start sm:text-base">
         {/* biome-ignore lint/a11y/noSvgWithoutTitle: <explanation> */}
@@ -46,12 +34,7 @@ export default async function NowPlaying() {
     <div className="flex ">
       <HoverCard>
         <HoverCardTrigger asChild>
-          <a
-            className="inline-block truncate font-medium"
-            href={nowPlaying.songUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a className="inline-block truncate font-medium" href={nowPlaying.songUrl} target="_blank" rel="noopener noreferrer">
             {truncate(nowPlaying.title, 24)}
           </a>
         </HoverCardTrigger>
@@ -75,13 +58,7 @@ export default async function NowPlaying() {
           </div>
           <div className="relative z-50 flex content-center justify-between space-x-4">
             <div className="h-24 w-24">
-              <Image
-                src={nowPlaying.albumImageUrl || ""}
-                alt={`Album cover of ${nowPlaying.album}`}
-                width={96}
-                height={96}
-                className="rounded-lg"
-              />
+              <Image src={nowPlaying.albumImageUrl || ""} alt={`Album cover of ${nowPlaying.album}`} width={96} height={96} className="rounded-lg" />
             </div>
             <div className="flex flex-col gap-1 truncate text-nowrap tracking-tight">
               <h1 className="truncate bg-gradient-to-r overlay:bg-[rgba(255,255,255,1)] from-[rgba(255,255,255,0.35)] to-[rgba(255,255,255,0.35)] bg-clip-text font-semibold text-transparent text-xs uppercase bg-blend-normal">

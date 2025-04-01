@@ -1,21 +1,13 @@
 import type { Metadata } from "next/types";
 
 export const OpenGraph: Metadata = {
-  metadataBase: process.env.NEXT_PUBLIC_SITE_URL
-    ? new URL(process.env.NEXT_PUBLIC_SITE_URL)
-    : undefined,
+  metadataBase: process.env.NEXT_PUBLIC_SITE_URL ? new URL(process.env.NEXT_PUBLIC_SITE_URL) : undefined,
   title: {
     default: "Oscar Treviño",
     template: "%s | Oscar Treviño",
   },
   description: "...",
-  keywords: [
-    "Design",
-    "Development",
-    "Engineering",
-    "Design Engineer",
-    "Software",
-  ],
+  keywords: ["Design", "Development", "Engineering", "Design Engineer", "Software"],
   openGraph: {
     type: "website",
     locale: "en_US",

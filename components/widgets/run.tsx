@@ -1,39 +1,13 @@
 import { cn } from "@/lib/utils";
 
 import { addMilliseconds, format } from "date-fns";
-import {
-  Clock1,
-  Clock2,
-  Clock3,
-  Clock4,
-  Clock5,
-  Clock6,
-  Clock7,
-  Clock8,
-  Clock9,
-  Clock10,
-  Clock11,
-  Clock12,
-} from "lucide-react";
+import { Clock1, Clock2, Clock3, Clock4, Clock5, Clock6, Clock7, Clock8, Clock9, Clock10, Clock11, Clock12 } from "lucide-react";
 import { createElement } from "react";
 import { FaRunning } from "react-icons/fa";
 import convert from "xml-js";
 
 const getClockIcon = (hour: number) => {
-  const hourToIcon = [
-    Clock12,
-    Clock1,
-    Clock2,
-    Clock3,
-    Clock4,
-    Clock5,
-    Clock6,
-    Clock7,
-    Clock8,
-    Clock9,
-    Clock10,
-    Clock11,
-  ];
+  const hourToIcon = [Clock12, Clock1, Clock2, Clock3, Clock4, Clock5, Clock6, Clock7, Clock8, Clock9, Clock10, Clock11];
 
   const normalizedHour = hour % 12;
 
@@ -64,16 +38,13 @@ export default async function Run() {
   const elapsedTimeMatch = description.match(/Moving Time:\s*([\d:\.]+)/);
   const pace = description.match(/Pace:\s*([\d:\.]+)/);
 
-  const distanceInKilometers = distanceMatch
-    ? Number.parseFloat(distanceMatch[1])
-    : 0;
+  const distanceInKilometers = distanceMatch ? Number.parseFloat(distanceMatch[1]) : 0;
   const elapsedTimeString = elapsedTimeMatch ? elapsedTimeMatch[1] : "00:00:00";
   const paceString = pace ? pace[1] : "00:00";
 
   // Convert elapsed time to seconds
   const elapsedTimeParts = elapsedTimeString.split(":").map(Number);
-  const elapsedTimeInSeconds =
-    elapsedTimeParts[0] * 3600 + elapsedTimeParts[1] * 60 + elapsedTimeParts[2];
+  const elapsedTimeInSeconds = elapsedTimeParts[0] * 3600 + elapsedTimeParts[1] * 60 + elapsedTimeParts[2];
 
   // Extracting the date
   const startDate = new Date(latestRun.pubDate._text); // e.g., "Sun, 08 Sep 2024 18:18:58 -0600"
@@ -106,11 +77,7 @@ export default async function Run() {
               {createElement(getClockIcon(startDate.getHours()), {
                 className: "mr-1 h-4 w-4",
               })}
-              {format(startDate, "p")} -{" "}
-              {format(
-                addMilliseconds(startDate, elapsedTimeInSeconds * 1000),
-                "p",
-              )}
+              {format(startDate, "p")} - {format(addMilliseconds(startDate, elapsedTimeInSeconds * 1000), "p")}
             </span>
           </div>
         </div>

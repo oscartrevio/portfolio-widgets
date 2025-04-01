@@ -1,19 +1,12 @@
 import { cn } from "@/lib/utils";
 
 import Link from "next/link";
-import {
-  FaGithub,
-  FaGoodreads,
-  FaLetterboxd,
-  FaSpotify,
-  FaStrava,
-  FaXTwitter,
-} from "react-icons/fa6";
+import { FaGithub, FaXTwitter } from "react-icons/fa6";
 
 const data = [
   {
     title: "@oscartrevio",
-    url: "#",
+    url: "https://github.com/oscartrevio",
     icon: FaGithub,
   },
   {

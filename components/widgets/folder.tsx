@@ -2,7 +2,7 @@
 
 import type { Transition } from "framer-motion";
 
-import { motion, MotionConfig } from "framer-motion";
+import { MotionConfig, motion } from "framer-motion";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -15,21 +15,15 @@ export default function Folder() {
 
   return (
     <MotionConfig transition={transition}>
-      <button
-        type="button"
-        onClick={toggleStatus}
-        className="relative h-48 w-1/2 rounded-3xl will-change-auto"
-      >
+      <button type="button" onClick={toggleStatus} className="relative h-48 w-1/2 rounded-3xl will-change-auto">
         <motion.svg
           initial={{
-            backgroundImage:
-              "linear-gradient(to bottom right, rgba(192,192,192,0.95) 0%, rgba(169,169,169,0.90) 100%)",
+            backgroundImage: "linear-gradient(to bottom right, rgba(192,192,192,0.95) 0%, rgba(169,169,169,0.90) 100%)",
           }}
           animate={
             isOpen
               ? {
-                  backgroundImage:
-                    "linear-gradient(to bottom right, rgba(192,192,192,1) 0%, rgba(169,169,169,1) 100%)",
+                  backgroundImage: "linear-gradient(to bottom right, rgba(192,192,192,1) 0%, rgba(169,169,169,1) 100%)",
                 }
               : {}
           }
@@ -49,22 +43,14 @@ export default function Folder() {
           animate={isOpen ? { x: 70, y: 0, rotate: "8deg" } : {}}
           className="-top-16 absolute left-1/2 aspect-[8.5/11] w-8 overflow-hidden rounded-2xl bg-white shadow-2xl"
         >
-          <Image
-            src={""}
-            alt="Image of Stoic Inca"
-            className="size-full object-cover object-bottom"
-          />
+          <Image src={""} alt="Image of Stoic Inca" className="size-full object-cover object-bottom" />
         </motion.div>
         <motion.div
           initial={{ x: -40, y: 95, translateX: "-50%", rotate: "0deg" }}
           animate={isOpen ? { x: -70, y: 0, rotate: "-6deg" } : {}}
           className="-top-16 absolute left-1/2 aspect-[8.5/11] w-8 overflow-hidden rounded-2xl bg-white shadow-2xl"
         >
-          <Image
-            src={""}
-            alt="Image of Playful Inca"
-            className="size-full object-cover object-top"
-          />
+          <Image src={""} alt="Image of Playful Inca" className="size-full object-cover object-top" />
         </motion.div>
         <motion.div
           initial={{

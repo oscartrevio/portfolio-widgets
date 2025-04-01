@@ -36,7 +36,7 @@ export default function Location() {
           alt="Map of Monterrey, NL"
           loading="eager"
           draggable="false"
-          className="absolute inset-0 z-10 h-full w-full object-cover"
+          className="absolute inset-0 z-10 h-full w-full object-cover saturate-[1.2]"
         />
         <div aria-hidden>
           <div className="absolute top-1/2 left-1/3 z-10 h-6 w-6 animate-marker rounded-full bg-blue-500" />

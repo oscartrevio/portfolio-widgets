@@ -4,13 +4,10 @@ import { BiSolidMoviePlay } from "react-icons/bi";
 import { FaStar, FaStarHalf } from "react-icons/fa6";
 import convert from "xml-js";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 1800;
+export const revalidate = 86400; // Cache for 1 day (24 hours)
 
 export default async function Movie() {
-  const response = await fetch("https://letterboxd.com/oscartrevio/rss/", {
-    cache: "no-store",
-  });
+  const response = await fetch("https://letterboxd.com/oscartrevio/rss/");
   const xmlText = await response.text();
 
   const movieData = JSON.parse(
@@ -31,9 +28,6 @@ export default async function Movie() {
 
   const posterUrlMatch = description.match(/<img src="([^"]+)"/);
   const posterUrl = posterUrlMatch ? posterUrlMatch[1] : null;
-
-  const fullStars = Math.floor(rating);
-  const hasHalfStar = rating % 1 >= 0.5;
 
   return (
     <>
@@ -62,11 +56,11 @@ export default async function Movie() {
           </h2>
           <p className="flex text-[#00C030] text-sm">
             {rating !== null &&
-              Array.from({ length: Math.floor(rating) }).map((_, i) => (
-                <FaStar key={`${title}-star-${i}`} />
+              Array.from({ length: Math.floor(rating) }).map(() => (
+                <FaStar key={crypto.randomUUID()} />
               ))}
             {rating !== null && rating % 1 >= 0.5 && (
-              <FaStarHalf key={`${title}-half`} />
+              <FaStarHalf key={crypto.randomUUID()} />
             )}
           </p>
         </div>
