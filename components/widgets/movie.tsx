@@ -63,9 +63,11 @@ export default async function Movie() {
           <p className="flex text-[#00C030] text-sm">
             {rating !== null &&
               Array.from({ length: Math.floor(rating) }).map((_, i) => (
-                <FaStar key={i} />
+                <FaStar key={`${title}-star-${i}`} />
               ))}
-            {rating !== null && rating % 1 >= 0.5 && <FaStarHalf />}
+            {rating !== null && rating % 1 >= 0.5 && (
+              <FaStarHalf key={`${title}-half`} />
+            )}
           </p>
         </div>
       </div>
