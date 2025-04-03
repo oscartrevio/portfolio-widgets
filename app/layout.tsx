@@ -2,6 +2,7 @@ import "@/styles/main.css";
 
 import type { Metadata } from "next";
 
+import ConsoleName from "@/components/console-name";
 // import * as Theme from "@/components/theme";
 import { OpenGraph } from "@/lib/og";
 
@@ -93,6 +94,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body>
+        <ConsoleName />
         <ViewTransitions>
           {/* <Theme.Provider> */}
           <main className="mx-auto max-w-screen-xs overflow-x-hidden px-4 py-10 font-inter md:overflow-x-visible">
